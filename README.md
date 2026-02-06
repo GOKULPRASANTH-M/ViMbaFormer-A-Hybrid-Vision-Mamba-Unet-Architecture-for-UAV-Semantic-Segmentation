@@ -1,21 +1,20 @@
 # ViMbaFormer  
-### A Hybrid Vision–Mamba U-Net Architecture for UAV Semantic Segmentation
+## A Hybrid Vision–Mamba U-Net Architecture for UAV Semantic Segmentation
 
-ViMbaFormer is a lightweight hybrid semantic segmentation framework that integrates **Vision Transformers**, **State Space Models (Mamba)**, and a **U-Net–style encoder–decoder architecture** for efficient UAV and aerial image understanding.  
-The model is designed to capture both **local spatial features** and **long-range global dependencies** while maintaining low computational cost.
+ViMbaFormer is a hybrid semantic segmentation framework designed for high-resolution UAV imagery. It integrates **Vision Transformers**, **Mamba State Space Models**, and a **U-Net–style encoder–decoder** to jointly model global context and fine spatial details with linear-time complexity.
 
-This repository provides the official PyTorch implementation of ViMbaFormer.
+The architecture is tailored for aerial scene understanding, urban analysis, and autonomous UAV applications.
 
 ---
 
-## 🚀 Key Features
+## 🚀 Highlights
 
-- Hybrid CNN + Transformer + Mamba architecture  
-- Efficient long-range modeling using State Space Models  
-- U-Net inspired encoder–decoder with skip connections  
-- Adaptive feature fusion and alignment blocks  
-- Lightweight design suitable for UAV / remote sensing applications  
-- Supports multi-class semantic segmentation  
+- Hybrid CNN + Transformer + Mamba design  
+- Visual State Space Blocks (VSSB) for long-range dependency modeling  
+- Hybrid Attention (Mamba + Window Attention + Convolution)  
+- Adaptive feature fusion decoder with boundary refinement  
+- Lightweight and efficient for large UAV images  
+- Strong performance on UAVid, UDD6, and SDD benchmarks  
 
 ---
 
@@ -23,36 +22,53 @@ This repository provides the official PyTorch implementation of ViMbaFormer.
 
 ViMbaFormer consists of:
 
-- **Encoder**: Lightweight CNN backbone with hierarchical feature extraction  
-- **Bottleneck**: Vision Transformer + Mamba blocks for global context modeling  
-- **Decoder**: Adaptive Fusion + AlignBlocks for multi-scale feature reconstruction  
-- **Segmentation Head**: Produces pixel-wise class predictions  
+### Encoder
+- CNN backbone for hierarchical spatial feature extraction  
+- Multiple **Visual State Space Blocks (VSSB)** for global receptive fields  
 
-The network effectively balances:
+### Bottleneck
+- Hybrid attention combining:
+  - Mamba selective state spaces (global context)
+  - Local window attention
+  - Convolutional spatial refinement  
 
-- Local texture understanding (CNN)  
-- Global dependency modeling (Transformer)  
-- Linear-complexity sequence processing (Mamba)
+### Decoder
+- U-Net style upsampling  
+- Adaptive fusion with learnable weights  
+- Boundary-aware attention modules  
 
+### Segmentation Head
+- Produces pixel-wise class predictions.
+
+This design balances:
+
+- Local texture (CNN)  
+- Global dependencies (Mamba + attention)  
+- Efficient computation (linear-complexity SSMs)
+  
 ---
 
+## 📊 Supported Datasets
 
----
+- UAVid (8 classes)  
+- UDD6 (6 classes)  
+- SDD (22 classes)  
 
-## 📊 Datasets
+### Dataset Format
 
-The model is designed for UAV / aerial semantic segmentation datasets such as:
-
-- UAVid  
-- ISPRS Potsdam / Vaihingen  
-- Custom aerial imagery  
-
-Prepare datasets in the following format:
-
+```text
 dataset/
 ├── images/
 └── masks/
+```
 
+Images are padded and split into **1024×1024 patches**:
+
+- UAVid → 8 patches / image  
+- UDD6 → 6 patches / image  
+- SDD → 24 patches / image  
+
+This preserves full spatial information while enabling efficient training.
 
 ---
 
@@ -61,9 +77,65 @@ dataset/
 ```bash
 git clone https://github.com/yourusername/ViMbaFormer.git
 cd ViMbaFormer
-
 pip install -r requirements.txt
 ```
 
-## 📁 Project Structure
+## ▶️ Training
 
+```bash
+python train.py --config config.yaml
+```
+
+Default settings:
+- Optimizer: AdamW
+- LR: 6e-5 (cosine annealing)
+- Patch size: 1024×1024
+- Batch size: 2 (train), 8 (val)
+- Loss: Cross-Entropy + Dice + Auxiliary supervision
+
+## 🧪 Testing
+```bash
+python test.py --checkpoint checkpoints/vimbaformer.pth
+```
+
+## 📈 Results
+### 📊 Benchmark Results
+
+- **UAVid**  
+  - mIoU: **69.5%**
+
+- **UDD6**  
+  - mIoU: **79.9%**
+
+- **SDD**  
+  - mIoU: **74.1%**  
+  - F1-score: **83.0%**
+
+ViMbaFormer consistently outperforms CNN, Transformer, and prior Mamba baselines, especially on:
+Fine structures
+Small objects
+Urban boundaries
+
+## ⚙️ Model Complexity
+| Model        | mIoU (UAVid) | Params (M) | MACs (G) |
+|-------------|-------------|-----------|----------|
+| LAPNet-L    | 66.0        | 8.6       | 25.4     |
+| UNetFormer | 67.8        | 17.7      | 62.1     |
+| **ViMbaFormer** | **69.5** | **19.0** | **68.4** |
+
+
+## 🔬 Key Contributions
+Hybrid attention combining Mamba + window attention + convolution
+Visual State Space Blocks for linear-complexity global modeling
+Adaptive decoder with learnable multi-scale fusion
+Strong generalization across multiple UAV datasets
+
+## 📜 Citation
+If you use this work, please cite:
+```bash
+@article{vimbaformer2026,
+  title={ViMbaFormer: A Hybrid Vision–Mamba U-Net Architecture for UAV Semantic Segmentation},
+  author={Mahalingam, Gokulprasanth and Deepak Kumar, B.S. and Vishnupriya, G. and Vasamsetti, Srikanth},
+  year={2026}
+}
+```

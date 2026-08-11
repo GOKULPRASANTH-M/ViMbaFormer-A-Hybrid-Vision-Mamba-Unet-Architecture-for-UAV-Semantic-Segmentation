@@ -111,7 +111,7 @@ Default settings:
 
 ## 🧪 Testing
 ```bash
-python test.py --checkpoint checkpoints/vimbaformer.pth
+python uavidtest.py --checkpoint checkpoints/vimbaformer.pth
 ```
 
 ## 📈 Results

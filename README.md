@@ -158,8 +158,8 @@ If you use this work, please cite:
 ## Acknowledgements
 
 This project is based on [Mamba](https://github.com/state-spaces/mamba)
-([paper](https://arxiv.org/abs/2312.00752)),
-[VMamba](https://github.com/MzeroMiko/VMamba)
-([paper](https://arxiv.org/abs/2401.10166)),
-and incorporates the selective scan implementation from VMamba.
-We sincerely thank the authors for their excellent work.
+([paper](https://arxiv.org/abs/2312.00752), [code](https://github.com/state-spaces/mamba))
+and [VMamba](https://github.com/MzeroMiko/VMamba)
+([paper](https://arxiv.org/abs/2401.10166), [code](https://github.com/MzeroMiko/VMamba)).
+The selective scan implementation used in this project is adapted from
+VMamba. We thank the authors for their excellent work.

@@ -96,8 +96,11 @@ cd ../..
 ```bash
 cd semantic_segmentation
 python train_supervision.py
-python train.py --config semantic_segmentation/config.yaml
 ```
+
+Configuration files are available in:
+semantic_segmentation/config/
+
 
 Default settings:
 - Optimizer: AdamW

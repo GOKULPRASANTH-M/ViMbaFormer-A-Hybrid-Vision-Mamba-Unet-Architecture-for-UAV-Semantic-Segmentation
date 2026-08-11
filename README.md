@@ -158,7 +158,7 @@ If you use this work, please cite:
 
 ## License
 
-Copyright (c) 2026 Gokulprasanth Mahalingam
+Copyright (c) 2025 Gokulprasanth Mahalingam
 
 The original work and contributions developed for ViMbaFormer are
 released under the MIT License. See [LICENSE](LICENSE) for details.

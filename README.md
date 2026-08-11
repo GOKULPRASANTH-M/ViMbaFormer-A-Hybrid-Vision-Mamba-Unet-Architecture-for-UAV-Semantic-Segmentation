@@ -139,7 +139,7 @@ The original copyright notices and applicable BSD license terms are
 retained in the corresponding source files.
 
 Modifications and integration for the ViMbaFormer project are by
-Gokulprasanth M.
+Gokulprasanth Mahalingam.
 
 ## 📜 Citation
 If you use this work, please cite:

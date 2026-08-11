@@ -71,19 +71,32 @@ Images are padded and split into **1024×1024 patches**:
 This preserves full spatial information while enabling efficient training.
 
 ---
-
 ## 🛠 Installation
-
+### 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/ViMbaFormer.git
-cd ViMbaFormer
-pip install -r requirements.txt
+git clone https://github.com/GOKULPRASANTH-M/ViMbaFormer-A-Hybrid-Vision-Mamba-Unet-Architecture-for-UAV-Semantic-Segmentation.git
+
+cd ViMbaFormer-A-Hybrid-Vision-Mamba-Unet-Architecture-for-UAV-Semantic-Segmentation
+```
+### 2. Install dependencies
+```bash
+pip install -r semantic_segmentation/requirements.txt
+```
+### 3. Install the selective scan module
+```bash
+cd selective_scan/selective_scan
+
+pip install -e .
+
+cd ../..
 ```
 
 ## ▶️ Training
 
 ```bash
-python train.py --config config.yaml
+cd semantic_segmentation
+python train_supervision.py
+python train.py --config semantic_segmentation/config.yaml
 ```
 
 Default settings:

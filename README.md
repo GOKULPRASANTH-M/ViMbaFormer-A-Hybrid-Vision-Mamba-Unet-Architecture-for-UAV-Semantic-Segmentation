@@ -132,14 +132,16 @@ Strong generalization across multiple UAV datasets
 
 ## Acknowledgements
 
-This project uses/adapts the selective scan implementation from
-[Mamba](https://github.com/state-spaces/mamba) by Albert Gu and Tri Dao.
+This repository includes a modified version of the selective scan
+implementation derived from the Mamba project by Albert Gu and Tri Dao:
 
-The original copyright notices and applicable BSD license terms are
-retained in the corresponding source files.
+https://github.com/state-spaces/mamba
 
-Modifications and integration for the ViMbaFormer project are by
-Gokulprasanth Mahalingam.
+The original copyright notices are retained in the corresponding
+source files. Please refer to the applicable license in the original
+Mamba repository for the terms governing the selective scan code.
+
+Modifications and integration for this project are by Gokulprasanth Mahalingam.
 
 ## 📜 Citation
 If you use this work, please cite:

@@ -130,6 +130,17 @@ Visual State Space Blocks for linear-complexity global modeling
 Adaptive decoder with learnable multi-scale fusion
 Strong generalization across multiple UAV datasets
 
+## Acknowledgements
+
+This project uses/adapts the selective scan implementation from
+[Mamba](https://github.com/state-spaces/mamba) by Albert Gu and Tri Dao.
+
+The original copyright notices and applicable BSD license terms are
+retained in the corresponding source files.
+
+Modifications and integration for the ViMbaFormer project are by
+Gokulprasanth M.
+
 ## 📜 Citation
 If you use this work, please cite:
 ```bash

@@ -155,6 +155,17 @@ If you use this work, please cite:
   year={2026}
 }
 ```
+
+## License
+
+Copyright (c) 2026 Gokulprasanth Mahalingam
+
+The original work and contributions developed for ViMbaFormer are
+released under the MIT License. See [LICENSE](LICENSE) for details.
+
+The Mamba and VMamba components acknowledged above retain their
+respective original copyright and licensing terms.
+
 ## Acknowledgements
 
 This project is based on [Mamba](https://github.com/state-spaces/mamba)
